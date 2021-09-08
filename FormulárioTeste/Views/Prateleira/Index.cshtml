@@ -1,0 +1,83 @@
+﻿@addTagHelper *, FormulárioTeste
+@model FormulárioTeste.Models.ViewModels.PreteleiraViewModel
+@{ ViewData["Title"] = "PrateleiraView"; }
+
+<form id="formxpto">
+    <h1>PrateleiraView</h1>
+    <div>
+        <div>
+            <label>PrateleiraId</label>
+            <input type="text" asp-for="@(Model.id)" />
+        </div>
+        <vc:livro Livro="@Model.livro" />
+
+        <vc:brinquedo brinquedo="@Model.brinquedo" />
+
+        <div>
+            <label>Conferente</label>
+            <input type="text" />
+
+            <div>
+                @foreach (var item in ViewBag.perguntas)
+                {
+                    <div>
+                        <label>Pergunta @item.id</label>
+                        <input type="checkbox" id="@item.id" class="pergunta" value="@item.Descricao" checked="@item.marcado" onclick="VerificarItem(this)">
+                        <label for="@item.id">@item.Descricao</label>
+                    </div>
+                }
+            </div>
+
+            <input type="button" name="Salvar" onclick="emitir()" value="SALVAR" />
+
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+
+    function VerificarItem(item) {
+
+        var perguntas = new Object();
+        perguntas.marcado = true;
+        perguntas.id = Number(item.id);
+        perguntas.Descricao = $(item).val();
+
+        var model = $("#formxpto").serialize();
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            url: '@Url.Action("AdicionaItens", "Prateleira")',
+            data: perguntas,
+            success: function (data) {
+                    alert(data);
+                },
+            error: function () {
+                    alert("Erro na tentativa de inclusão!");
+                }
+            });
+
+
+    }
+
+
+    function emitir() {
+
+        var model = $("#formxpto").serialize();
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            url: '@Url.Action("SalvarDados", "Prateleira")',
+            data: model,
+            success: function (data) {
+                    alert(data);
+                },
+            error: function () {
+                    alert("Erro na tentativa de emissão!");
+                }
+            });
+}
+
+</script>
+
+

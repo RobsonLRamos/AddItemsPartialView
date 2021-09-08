@@ -1,0 +1,15 @@
+﻿@addTagHelper *, FormulárioTeste
+@model FormulárioTeste.Models.ViewModels.BrinquedoViewModel
+
+<div>
+    <label>Id da Industria</label>
+    <input type="text" asp-for="@(Model.brinquedo.Industria.Id)" />
+</div>
+<div>
+    <label>Nome Industria</label>
+    <input type="text" asp-for="@(Model.brinquedo.Industria.Nome)" />
+</div>
+<div>
+    <label>UF do Industria</label>
+    <input type="text" asp-for="@(Model.brinquedo.Industria.Estado)" />
+</div>

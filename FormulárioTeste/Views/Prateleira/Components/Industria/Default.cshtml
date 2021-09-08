@@ -1,0 +1,15 @@
+﻿@addTagHelper *, FormulárioTeste
+@model FormulárioTeste.Models.ViewModels.IndustriaViewModel
+
+<div>
+    <label>Id da Industria</label>
+    <input type="text" asp-for="@(Model.Industria.Id)" />
+</div>
+<div>
+    <label>Nome Industria</label>
+    <input type="text" asp-for="@(Model.Industria.Nome)" />
+</div>
+<div>
+    <label>UF do Industria</label>
+    <input type="text" asp-for="@(Model.Industria.Estado)" />
+</div>

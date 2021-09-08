@@ -1,0 +1,13 @@
+﻿@model FormulárioTeste.Models.ViewModels.LivroViewModel
+
+
+@await Html.PartialAsync("~/Views/PartialView/_AutorPartialView.cshtml", Model, new ViewDataDictionary(ViewData))
+
+<div>
+    <label>Id do Livro</label>
+    <input type="text" asp-for="@(Model.Livro.Id)" />
+</div>
+<div>
+    <label>Titulo do Livro</label>
+    <input type="text" asp-for="@(Model.Livro.Titulo)" />
+</div>

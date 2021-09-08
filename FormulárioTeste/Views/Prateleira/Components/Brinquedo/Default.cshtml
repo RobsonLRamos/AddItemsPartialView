@@ -1,0 +1,15 @@
+﻿@addTagHelper *, FormulárioTeste
+@model FormulárioTeste.Models.ViewModels.BrinquedoViewModel
+
+<div>
+    <label>Id do brinquedo</label>
+    <input type="text" asp-for="@(Model.brinquedo.Id)" />
+</div>
+@*<div>
+        <vc:industria industria="@(Model.brinquedo.Industria)"/>
+    </div>*@
+@await Html.PartialAsync("~/Views/PartialView/_IndustriaPartialView.cshtml", Model, new ViewDataDictionary(ViewData))
+<div>
+    <label>Nome do brinquedo</label>
+    <input type="text" asp-for="@(Model.brinquedo.Nome)" />
+</div>
